@@ -24,3 +24,6 @@ mongoose.connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.4rzjzfg.mongodb.net
 });
 
 app.use("/api/users", Router);
+
+export default app;
+
