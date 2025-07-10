@@ -1,10 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
-import userRouter from "./routes/userRoute.js";
+import Router from "./routes/userRoute.js";
 import dotenv from 'dotenv';
-import cors from 'cors'
-dotenv.config();
+import cors from 'cors';
+import { authenticate, authorize } from "./middlewares/auth.js";
 
+dotenv.config();
 const app = express();
 app.use(cors())
 app.use(express.json());
@@ -22,4 +23,4 @@ mongoose.connect(`mongodb+srv://${dbuser}:${dbpass}@cluster0.4rzjzfg.mongodb.net
   });
 });
 
-app.use("/api/users", userRouter);
+app.use("/api/users", Router);
